@@ -74,7 +74,7 @@ if __name__ == '__main__':
     import string
 
     pas = {'vaibhav': 'Abcd123!@#',
-           'Rohit': 'COW!@#',
+           'Rohit': 'COW!@#123',
            }
 
     users = {'vaibhav': {'name': 'Vaibhav Singh', 'age': 19},
