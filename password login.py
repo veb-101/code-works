@@ -73,7 +73,7 @@ if __name__ == '__main__':
     import getpass
     import string
 
-    pas = {'vaibhav': 'Infiltrator!@#',
+    pas = {'vaibhav': 'Abcd123!@#',
            'rohit': 'COW!@#',
            }
 
