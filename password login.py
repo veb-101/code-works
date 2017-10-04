@@ -7,7 +7,7 @@ def login():
     print("Welcome!!!!")
     wrong = False
     while not wrong:
-        name = input("Enter Your First Name:").lower()
+        name = input("Enter Your First Name:")
         password = getpass.getpass("Enter the password -> ")
         if name in pas:
             if password == pas.get(name):
@@ -45,7 +45,7 @@ def check(newPass):
             oneUpper = True
         elif i in string.printable[62:94]:
             oneSpecial = True
-    return True if length and oneLower and oneUpper and oneSpecial else False
+    return True if (length and oneLower) and (oneUpper and oneSpecial) else False
 
 
 def addNew(newName, newPass):
@@ -55,9 +55,13 @@ def addNew(newName, newPass):
     print("ADDED...\nAdd Details Realated to User :-]")
     lastName = input("Last name of the user:")
     age = input("Enter age of user:")
-    users[newName]['name'] = '{} {}'.format(newName, lastName)
+    fullname = '{} {}'.format(newName, lastName)
+    users[newName]['name'] = '{}'.format(fullname)
     users[newName]['age'] = age
     print("Details Added for the User:{}".format(newName))
+    input()
+
+# Helper Code
 
 
 def default():
@@ -69,22 +73,43 @@ def default():
     ''')
 
 
+def clearscreen(command, numlines=100):
+    """Clear the console.
+  numlines is an optional argument used only as a fall-back.
+  """
+
+    if os.name == "posix":
+        # Unix/Linux/MacOS/BSD/etc
+        os.system(command)
+    elif os.name in ("nt", "dos", "ce"):
+        # DOS/Windows
+        os.system('CLS')
+    else:
+        # Fallback for other operating systems.
+        print('\n' * numlines)
+
+
+# MAIN CODE
+
+
 if __name__ == '__main__':
     import getpass
     import string
+    import os
 
-    pas = {'vaibhav': 'Abcd123!@#',
-           'Rohit': 'COW!@#123',
-           }
+    pas = {"Vaibhav": "3001Mkgandhi!"}
 
-    users = {'vaibhav': {'name': 'Vaibhav Singh', 'age': 19},
-             'rohit': {'name': 'Rohit Singh', 'age': 25},
+    users = {'Vaibhav': {'name': 'Vaibhav Singh', 'age': 19},
              }
 
     userChoice = input("Wish to login or add new or exit (l/a/e):").lower()[0]
     while userChoice != 'e':
         if userChoice == 'l':
             login()
+            input()
+            clearscreen('clear')
+
+            # print(chr(27) + "[2J")
         elif userChoice == 'a':
             newName = input("Name of the User:")
             nameExist = True if users.get(newName) else False
@@ -97,8 +122,13 @@ if __name__ == '__main__':
             test = check(newPass)
             while not test:
                 default()
+                print("Password Criteria not Satisfied.")
                 newPass = input("Enter Password:")
                 test = check(newPass)
             addNew(newName, newPass)
+            # print(chr(27) + "[2J")
+            clearscreen('clear')
         userChoice = input("Wish to login or add new or exit (l/a/e):").lower()[0]
     print("\nProgram Ended")
+    input()
+    clearscreen("reset")
