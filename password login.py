@@ -108,7 +108,6 @@ if __name__ == '__main__':
             login()
             input()
             clearscreen('clear')
-
             # print(chr(27) + "[2J")
         elif userChoice == 'a':
             newName = input("Name of the User:")
@@ -118,12 +117,12 @@ if __name__ == '__main__':
                 newName = input('Try new name for the User:')
                 nameExist = True if newName in pas.keys() else False
             default()
-            newPass = input("Enter Password:")
+            newPass = getpass.getpass("Enter Password -> ")
             test = check(newPass)
             while not test:
-                default()
                 print("Password Criteria not Satisfied.")
-                newPass = input("Enter Password:")
+                default()
+                newPass = getpass.getpass("Enter Password -> ")
                 test = check(newPass)
             addNew(newName, newPass)
             # print(chr(27) + "[2J")
