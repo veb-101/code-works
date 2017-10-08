@@ -95,8 +95,8 @@ class AStar_Solver:
 # MAIN
 import time
 if __name__ == "__main__":
-    start1 = "vaabihV"
-    goal1 = "Vaibhav"
+    start1 = "vaabihV" ## the letters in goal jumbled
+    goal1 = "Vaibhav"  ## The final goal
     print('starting...')
     a = AStar_Solver(start1, goal1)
     a.Solve()
