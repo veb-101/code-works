@@ -95,10 +95,10 @@ class AStar_Solver:
 # MAIN
 import time
 if __name__ == "__main__":
-    start1 = "vaabihV" ## the letters in goal jumbled
-    goal1 = "Vaibhav"  ## The final goal
+    start = "vaabihV" ## the letters in goal jumbled
+    goal = "Vaibhav"  ## The final goal
     print('starting...')
-    a = AStar_Solver(start1, goal1)
+    a = AStar_Solver(start, goal)
     a.Solve()
     for i in range(len(a.path)):
         print("%d) " % i + a.path[i])
