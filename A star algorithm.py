@@ -1,5 +1,5 @@
+#!/usr/bin/python3
 from Queue import PriorityQueue
-
 
 class State(object):
     ''' Base template class to be inherited from for subclasses '''
