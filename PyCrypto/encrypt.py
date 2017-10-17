@@ -23,7 +23,6 @@ def encrypt(key, filename):
                      chunk += b" " * (16 - (len(chunk) % 16))
                 outFile.write(encryptor.encrypt(chunk))
 
-
 def decrypt(key, filename):
     chunksize = 64 * 1024
     outputFile = filename[11:]
@@ -38,7 +37,6 @@ def decrypt(key, filename):
                     break
                 outfile.write(decryptor.decrypt(chunk))
             outfile.truncate(filesize)
-
 
 def getKey(password):
     hasher = SHA256.new(password.encode('utf-8'))
@@ -57,7 +55,7 @@ def Main():
         decrypt(getKey(password), filename)
         print("Done")
     else:
-        print("No Option selected, closing...")
+        print("No option selected, closing...")
 
 
 if __name__ == '__main__':
